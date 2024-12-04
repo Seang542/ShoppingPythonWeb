@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% load humanize %}
+
+{% block title %}
+    ລາຍລະອຽດສິນຄ້າ | {{ product.name }}
+{% endblock %}
+
+{% block content %}
+   <!-- ເນື້ອຫາ (Content) -->
+   <div class="container" style="margin: 5rem auto;">
+    <div class="card-wrapper">
+        <div class="row align-items-center mt-4 my-5">
+            <div class="col-12 col-lg-6">
+                <div class="image-wrapper">
+                    <img src="{{ product.image.url }}">
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 my-4">
+                <div class="text-box">
+                    <h5 class="mbr-title mbr-fonts-style display-5">
+                        <strong>{{ product.name }}</strong>
+                        <p class="display-7 text-secondary">ສິນຄ້າມີຢູ່ {{product.stock}} ອັນ </p>
+                    </h5>
+                    <p class="mbr-text mbr-fonts-style display-7">{{ product.description }}</p>
+                    <div class="cost">
+                        <span class="currentcost mbr-fonts-style pr-2 display-5">ລາຄາ {{ product.price | intcomma}} ກີບ</span>
+                    </div>
+                    <div class="mbr-section-btn pt-3">
+                        {% if product.stock <= 0 %}
+                            <h3 class="text-secondary mx-2 ">
+                                <strong>ບໍ່ມີສິນຄ້າ</strong>
+                            </h3>
+                        {% else %}
+                        <a href="cart.html" class="btn btn-primary display-4">
+                            <i class="bi bi-cart3"></i></i>&nbsp;
+                            ເພິ່ມເຂົ້າໃນກະຕ່າສິນຄ້າ
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+{% endblock %}
